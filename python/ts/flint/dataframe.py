@@ -397,9 +397,9 @@ class TimeSeriesDataFrame(pyspark.sql.DataFrame):
 
         Example:
 
-            >>> leftdf.leftJoin(rightdf, tolerance='100ns', key='tid')
-            >>> leftdf.leftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key='tid')
-            >>> leftdf.leftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key=['tid', 'industryGroup'])
+            >>> leftdf.leftJoin(rightdf, tolerance='100ns', key='id')
+            >>> leftdf.leftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key='id')
+            >>> leftdf.leftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key=['id', 'industryGroup'])
 
         :param right: A dataframe to join
         :type right: :class:`TimeSeriesDataFrame`
@@ -433,9 +433,9 @@ class TimeSeriesDataFrame(pyspark.sql.DataFrame):
 
         Example:
 
-            >>> leftdf.futureLeftJoin(rightdf, tolerance='100ns', key='tid')
-            >>> leftdf.futureLeftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key='tid')
-            >>> leftdf.futureLeftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key=['tid', 'industryGroup'])
+            >>> leftdf.futureLeftJoin(rightdf, tolerance='100ns', key='id')
+            >>> leftdf.futureLeftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key='id')
+            >>> leftdf.futureLeftJoin(rightdf, tolerance=pandas.Timedelta(nanoseconds=100), key=['id', 'industryGroup'])
 
         :param right: A dataframe to join
         :type right: :class:`TimeSeriesDataFrame`
@@ -580,10 +580,10 @@ class TimeSeriesDataFrame(pyspark.sql.DataFrame):
 
         Example:
 
-           >>> # calculates rolling weighted mean of return for each tid
+           >>> # calculates rolling weighted mean of return for each id
            >>> result = (df.summarizeWindows(windows.past_absolute_time("365days"),
            ...                               summarizers.weighted_mean("return", "volume"),
-           ...                               key="tid"))
+           ...                               key="id"))
 
         :param window: A window that specifies which rows to add to the new column. Lists of windows can be found in :mod:`.windows`.
         :param summarizer: A summarizer or a list of summarizers that will calculate results for the new columns. Available summarizers can be found in :mod:`.summarizers`.
@@ -605,8 +605,8 @@ class TimeSeriesDataFrame(pyspark.sql.DataFrame):
         Example:
 
             >>> # calcuates the weighted mean of return and t-statistic
-            >>> result = df.summarize(summarizers.weighted_mean("return", "volume"), key="tid")
-            >>> result = df.summarize(summarizers.weighted_mean("return", "volume"), key=["tid", "industryGroup"])
+            >>> result = df.summarize(summarizers.weighted_mean("return", "volume"), key="id")
+            >>> result = df.summarize(summarizers.weighted_mean("return", "volume"), key=["id", "industryGroup"])
 
         :param summarizer: A summarizer or a list of summarizers that will calculate results for the new columns. Available summarizers can be found in :mod:`.summarizers`.
         :param key: Optional. One or multiple column names to use as the grouping key

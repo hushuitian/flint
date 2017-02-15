@@ -22,7 +22,7 @@
 Example:
 
     >>> from ts.flint import windows
-    >>> prices.addWindows(windows.past_absolute_time('1d'), key='tid')
+    >>> prices.addWindows(windows.past_absolute_time('1d'), key='id')
 
 '''
 
@@ -85,7 +85,7 @@ def past_absolute_time(duration):
 
     Example:
 
-        >>> prices.addWindows(windows.past_absolute_time('1d'), key='tid')
+        >>> prices.addWindows(windows.past_absolute_time('1d'), key='id')
 
     :param duration: the size of the window, as a string with units
     :type duration: str
@@ -120,7 +120,7 @@ def future_absolute_time(duration):
 
     Example:
 
-        >>> prices.addWindows(windows.future_absolute_time('1d'), key='tid')
+        >>> prices.addWindows(windows.future_absolute_time('1d'), key='id')
 
     :param duration: the size of the window, as a string with units
     :type duration: str

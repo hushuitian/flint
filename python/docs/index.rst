@@ -31,7 +31,7 @@ new features like temporal joins.
 :mod:`ts.flint.summarizers` contains aggregation functions like
 EMAs.
 
-    >>> events.leftJoin(returns, tolerance='5d', key='tid')
+    >>> events.leftJoin(returns, tolerance='5d', key='id')
 
 
 Contents:

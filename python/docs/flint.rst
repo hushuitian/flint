@@ -45,8 +45,8 @@ Note on Dataframes and Immutability
    This completely discards the results of these operations.  You'll
    simply get the wrong data.
 
-       >>> df.select('time', 'tid', 'openPrice', 'closePrice')
-       >>> df.addWindows(windows.past_absolute_time('5d'), key='tid')
+       >>> df.select('time', 'id', 'openPrice', 'closePrice')
+       >>> df.addWindows(windows.past_absolute_time('5d'), key='id')
 
    **Okay Example:**
 
@@ -56,8 +56,8 @@ Note on Dataframes and Immutability
    like this multiple times, you'll add multiple layers of the same
    transformations to your dataframes.
 
-       >>> df = df.select('time', 'tid', 'openPrice', 'closePrice')
-       >>> df = df.addWindows(windows.past_absolute_time('5d'), key='tid')
+       >>> df = df.select('time', 'id', 'openPrice', 'closePrice')
+       >>> df = df.addWindows(windows.past_absolute_time('5d'), key='id')
 
    **Good Example:**
 
@@ -68,9 +68,9 @@ Note on Dataframes and Immutability
    now chain multiple things off price_df later, without re-reading
    raw_df.
 
-       >>> price_df = raw_df.select('time', 'tid', 'openPrice', 'closePrice')
-       >>> window_df_7d = price_df.addWindows(windows.past_absolute_time('7d'), key='tid')
-       >>> window_df_14d = price_df.addWindows(windows.past_absolute_time('14d'), key='tid')
+       >>> price_df = raw_df.select('time', 'id', 'openPrice', 'closePrice')
+       >>> window_df_7d = price_df.addWindows(windows.past_absolute_time('7d'), key='id')
+       >>> window_df_14d = price_df.addWindows(windows.past_absolute_time('14d'), key='id')
 
 
 Summarizers

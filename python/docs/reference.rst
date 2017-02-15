@@ -61,7 +61,7 @@ TimeSeriesDataFrame
 
       .. code-block:: python
 
-         openPrice = price.select("time", "tid", "openPrice")
+         openPrice = price.select("time", "id", "openPrice")
 
       :param cols: list of column names
       :type cols: list(str)
@@ -121,7 +121,7 @@ TimeSeriesDataFrame
           ...     return sum(row.closePrice for row in window) / nrows
           ...
           >>> priceWithMA = (price
-          ...                .addWindows(windows.past_absolute_time("14days"), "tid")
+          ...                .addWindows(windows.past_absolute_time("14days"), "id")
           ...                .withColumn("movingAverage", movingAverage(col("window"))))
 
       :param colName: name of the new column

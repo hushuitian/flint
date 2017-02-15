@@ -105,7 +105,7 @@ Join trades to quotes
 
 .. code-block:: py
 
-   df = trade.leftJoin(quote, tolerance='1min', key='tid')
+   df = trade.leftJoin(quote, tolerance='1min', key='id')
 
 
 Time-based Windowing
@@ -144,7 +144,7 @@ Exponential moving average over the last 10 days with a decay factor of 0.9 for 
 Moving average
 ``````````````
 
-Moving average over the last two weeks for IBM:
+Moving average over the last two weeks:
 
 .. code-block:: py
 
@@ -158,7 +158,7 @@ Moving average over the last two weeks for IBM:
    df = price.addWindows(windows.past_absolute_time('14days'))
    df = df.withColumn('movingAverage', movingAverage(df.window_past_14days))
 
-Moving average over the last two weeks for all tids in ``u.ACTIVE_3000_US``:
+Moving average over the last two weeks for each id:
 
 .. code-block:: py
 
@@ -169,7 +169,7 @@ Moving average over the last two weeks for all tids in ``u.ACTIVE_3000_US``:
            return 0
        return sum(row.closePrice for row in window) / nrows
 
-   df = price.addWindows(windows.past_absolute_time('14days'), key='tid')
+   df = price.addWindows(windows.past_absolute_time('14days'), key='id')
    df = df.withColumn('movingAverage', movingAverage(df.window_past_14days))
 
 
@@ -290,8 +290,8 @@ Aggregating
 
 Average daily volume
 ````````````````````
-Average daily volume for all tids in ``u.ACTIVE_3000_US``:
+Average daily volume for each id:
 
 .. code-block:: py
 
-   df = active_price.summarize(summarizers.nth_moment('volume', 1), key='tid')
+   df = active_price.summarize(summarizers.nth_moment('volume', 1), key='id')

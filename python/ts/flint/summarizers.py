@@ -25,7 +25,7 @@
 Example:
 
     >>> from ts.flint import summarizers
-    >>> prices.summarize(summarizers.correlation('openPrice', 'closePrice'), key='tid')
+    >>> prices.summarize(summarizers.correlation('openPrice', 'closePrice'), key='id')
 
 '''
 
